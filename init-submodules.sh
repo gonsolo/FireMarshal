@@ -9,10 +9,10 @@ set -x
 git submodule update --progress --filter=tree:0 --init \
   boards/default/firmware/opensbi \
   wlutil/busybox \
-  boards/default/distros/br/buildroot \
   boards/firechip/drivers/*
 
 # Get all because of merge with stable
 git submodule update --progress --init \
   boards/default/linux \
+  boards/default/distros/br/buildroot
 
