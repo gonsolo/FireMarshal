@@ -8,6 +8,7 @@ CONFIG_DEFAULT_HOSTNAME="ucb"
 # gonsolo
 # CONFIG_DRM is not set
 CONFIG_DRM=y
+CONFIG_DRM_BORG=y
 
 CONFIG_EXT2_FS=y
 # CONFIG_FB is not set
