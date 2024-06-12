@@ -453,6 +453,11 @@ def makeModules(cfg):
                    ["modules_prepare", '-j' + str(wlutil.getOpt('jlevel'))],
                    cwd=linCfg['source'])
 
+        # gonsolo: modules_prepare does not provide Module.symvers so run kernel build
+        wlutil.run(["make"] + wlutil.getOpt('linux-make-args') +
+                   ["modules", '-j' + str(wlutil.getOpt('jlevel'))],
+                   cwd=linCfg['source'])
+
         makeCmd = "make LINUXSRC=" + str(linCfg['source'])
 
         for driverDir in linCfg['modules'].values():
