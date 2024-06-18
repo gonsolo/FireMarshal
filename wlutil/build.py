@@ -455,6 +455,9 @@ def makeModules(cfg):
 
         # gonsolo: modules_prepare does not provide Module.symvers so run kernel build
         wlutil.run(["make"] + wlutil.getOpt('linux-make-args') +
+                   ["vmlinux", '-j' + str(wlutil.getOpt('jlevel'))],
+                   cwd=linCfg['source'])
+        wlutil.run(["make"] + wlutil.getOpt('linux-make-args') +
                    ["modules", '-j' + str(wlutil.getOpt('jlevel'))],
                    cwd=linCfg['source'])
 
