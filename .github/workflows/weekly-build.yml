@@ -25,7 +25,7 @@ jobs:
             rm -rf ${{ env.REMOTE_WORK_DIR }}/.* || true
             rm -rf ${{ github.workspace }}/* || true
             rm -rf ${{ github.workspace }}/.* || true
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup repo copy
         run: |
           git clone $GITHUB_WORKSPACE ${{ env.REMOTE_WORK_DIR }}
@@ -33,8 +33,7 @@ jobs:
         run: |
           cd ${{ env.REMOTE_WORK_DIR }}
           eval "$(conda shell.bash hook)"
-          conda-lock --conda $(which conda) -f ./conda-reqs.yaml -f ./riscv-tools.yaml -p linux-64
-          conda-lock install --conda $(which conda) -p $PWD/.conda-env
+          ./scripts/setup-conda.sh
       - name: Initialize all submodules
         run: |
           cd ${{ env.REMOTE_WORK_DIR }}
